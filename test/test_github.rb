@@ -43,7 +43,7 @@ class TestGitHub < Test::Unit::TestCase
       assert_kind_of HTTP::Message, r
       assert_equal r.status, 200
       assert_kind_of Hash, r.body
-      assert_equal 'sukria', r.body['users'][0]['name']
+      assert_equal 'Alexis Sukrieh', r.body['users'][0]['name']
     end
   end
 

@@ -23,7 +23,7 @@ class TestEnableIf < Test::Unit::TestCase
 
     # user_search is not altered
     r = spore.user_search(:format => 'json', :search => 'sukria')
-    assert_equal 'sukria', r.body['users'][0]['name']
+    assert_equal 'Alexis Sukrieh', r.body['users'][0]['name']
 
     spore.enable_if(Spore::Middleware::FooBar, {}) do |env|
       env['spore.request_path'].match(/\/user\/search/)
