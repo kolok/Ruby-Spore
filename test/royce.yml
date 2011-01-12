@@ -1,0 +1,20 @@
+---
+base_url: https://svn.rails-royce.org/
+version: 0.2
+format:
+  - json
+  - xml
+  - yml
+methods:
+###################################################################
+#  repos functions 
+###################################################################
+  get_repos:
+    path: /repos/:id.:format
+    method: GET
+    required_params:
+      - account_id
+      - id
+    optional_params:
+      - label
+      - account_id
