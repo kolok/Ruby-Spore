@@ -259,7 +259,12 @@ class Spore
 
     # normalize our headers for HttpClient
     h = headers.map{|header| header.values_at(:name,:value)}
-  
+
+    # force content type to form urlencoded
+    if ! h.index{|a| a[0] == 'Content-Type' } && method_name != 'get'
+      h.push(['Content-Type', 'application/x-www-form-urlencoded'])
+    end
+
     # the response object we expect to have
     resp = client.send(method_name,path, params, h) if method_name =~ %r{get|post|put|delete}
 
