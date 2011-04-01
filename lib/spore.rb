@@ -176,7 +176,7 @@ class Spore
     method = m['method'].downcase
     path = m['path']
     params = m['params']
-    required = m['required_params'] || m['required']
+    required = m['required_params'] || m['required'] || []
     expected = m['expected']
     desc = m['description']
 
@@ -266,7 +266,8 @@ class Spore
     end
 
     # the response object we expect to have
-    resp = client.send(method_name,path, params, h) if method_name =~ %r{get|post|put|delete}
+    resp = client.send(method_name,path, params, h) if method_name =~ %r{get|post|put}
+    resp = client.delete(path, h) if method_name == 'delete'
 
     return resp
   end
