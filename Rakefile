@@ -14,7 +14,7 @@ begin
     gem.authors = ["Alexis Sukrieh <sukria@sukria.net> [sukria]", "Hery Ramihajamalala <hery@rails-royce.org> [hallelujah]"]
     # gem is a Gem::Specification... see http://www.rubygems.org/read/chapter/20 for additional settings
     gem.add_dependency "json", ">= 1.4.6"
-    gem.add_dependency "httpclient"
+    gem.add_dependency "httpclient", "= 2.1.7.2"
   end
   Jeweler::GemcutterTasks.new
 rescue LoadError
