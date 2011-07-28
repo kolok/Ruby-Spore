@@ -20,3 +20,6 @@ begin
 rescue LoadError
  puts "Install rcov gem : `gem install rcov`"
 end
+
+desc "Default task"
+task :default => "test"
