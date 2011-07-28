@@ -34,6 +34,7 @@ Gem::Specification.new do |s|
 
   s.add_development_dependency(%q<test-unit>, [">= 2.1.0"])
   s.add_development_dependency(%q<rake>, [">= 0.8.7"])
+  s.add_development_dependency(%q<rcov>, [">= 0.9.9"])
 
   if s.respond_to? :specification_version then
     current_version = Gem::Specification::CURRENT_SPECIFICATION_VERSION
