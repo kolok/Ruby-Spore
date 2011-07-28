@@ -261,7 +261,7 @@ class Spore
     h = headers.map{|header| header.values_at(:name,:value)}
 
     # force content type to form urlencoded
-    if ! h.index{|a| a[0] == 'Content-Type' } && method_name != 'get'
+    if ! h.any?{|a| a[0] == 'Content-Type' } && method_name != 'get'
       h.push(['Content-Type', 'application/x-www-form-urlencoded'])
     end
 
