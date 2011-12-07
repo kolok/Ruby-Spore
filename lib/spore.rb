@@ -191,7 +191,10 @@ class Spore
       end
 
       # build the real path (expand named tokens)
-      real_path = path
+      path_detail = path.split(/\?/)
+      real_path = path_detail[0]
+      additional_args = path_detail[1].split(/&/).map{ |c| c.split(/=/) } if !path_detail[1].nil?
+
       while m = real_path.match(/:([^:\/\.]+)/)
         if not args.has_key?(m[1].to_sym)
           raise RequiredParameterExptected, "named token `#{m[1]}' expected"
@@ -199,6 +202,11 @@ class Spore
         real_path = real_path.gsub(/:#{m[1]}/, args[m[1].to_sym].to_s)
           args.delete(m[1].to_sym)
       end
+
+      additional_args.each{ |c|
+        args[c[0].to_sym] = c[1]
+      } if !additional_args.nil?
+
       full_path = "#{self.base_url}#{real_path}"
 
       # build the ENV hash
